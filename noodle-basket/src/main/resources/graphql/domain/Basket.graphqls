@@ -1,0 +1,4 @@
+type Basket {
+    contents: [BasketLine!]!
+}
+

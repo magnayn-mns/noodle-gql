@@ -1,0 +1,10 @@
+enum Measure {
+    EA,
+    Gram
+}
+
+type Price {
+    amount: Float
+    uom: Measure
+}
+

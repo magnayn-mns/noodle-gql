@@ -1,0 +1,6 @@
+type Product @key(fields: "id"){
+    id: ID!
+    name: String
+    colour: String
+    GTIN: String
+}
