@@ -1,0 +1,5 @@
+
+type Identity @key(fields: "id") {
+    id: ID!
+}
+

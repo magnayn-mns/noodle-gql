@@ -1,0 +1,7 @@
+enum InvalidReasonType {
+    """Product does not have a price in location of quote on effective date"""
+    NO_PRICE
+    """Coupon could not be applied to quote, because other coupon conditions did not apply"""
+    COUPON_CONDITION_NOT_MET
+}
+

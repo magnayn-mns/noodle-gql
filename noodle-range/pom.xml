@@ -39,6 +39,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-graphql</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.graphql-java-kickstart</groupId>
+			<artifactId>playground-spring-boot-starter</artifactId>
+			<version>5.10.0</version>
+		</dependency>
 
 		<dependency>
 			<groupId>com.h2database</groupId>
@@ -57,18 +62,30 @@
 			<artifactId>federation-graphql-java-support</artifactId>
 			<version>2.0.7</version>
 		</dependency>
-<!--
+
 		<dependency>
-			<groupId>com.graphql-java-kickstart</groupId>
-			<artifactId>graphql-java-tools</artifactId>
-			<version>13.0.0</version>
+			<groupId>com.nirima.noodle</groupId>
+			<artifactId>noodle-core</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
-			<groupId>com.graphql-java</groupId>
-			<artifactId>graphql-java-extended-scalars</artifactId>
-			<version>18.1</version>
+			<groupId>com.nirima.noodle</groupId>
+			<artifactId>noodle-core</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<scope>compile</scope>
 		</dependency>
-		-->
+		<!--
+                <dependency>
+                    <groupId>com.graphql-java-kickstart</groupId>
+                    <artifactId>graphql-java-tools</artifactId>
+                    <version>13.0.0</version>
+                </dependency>
+                <dependency>
+                    <groupId>com.graphql-java</groupId>
+                    <artifactId>graphql-java-extended-scalars</artifactId>
+                    <version>18.1</version>
+                </dependency>
+                -->
 		<!-- some debuggers -->
 	<!--	<dependency>
 			<groupId>com.graphql-java-kickstart</groupId>

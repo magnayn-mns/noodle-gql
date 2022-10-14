@@ -1,0 +1,19 @@
+type Totals {
+    """
+    The total price to be paid by the customer (totalAfterDiscounts - totalReturns)
+
+    A negative value indicates that the total is to be paid to the customer
+
+    """
+    grandTotal: DirectionalMoney!
+
+    """The total price after all promotions of all line items in the basket"""
+    totalAfterDiscounts: Money!
+
+    """The total base price of all the line items in the basket"""
+    totalBeforeDiscounts: Money!
+
+    """The total value of line items being returned"""
+    totalReturns: Money!
+}
+

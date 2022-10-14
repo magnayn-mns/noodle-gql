@@ -1,4 +1,19 @@
 type Query {
-    price(productId: ID!): Price
+    """
+    Get priced quote for given quote Id
+
+    Equivalent to GET /quote/{quoteId}
+    """
+    quote(
+        """ID of quote to return"""
+        id: ID!
+    ): Quote
 }
+
+
+
+
+
+
+
 

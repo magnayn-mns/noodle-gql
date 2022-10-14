@@ -1,0 +1,7 @@
+enum UnitOfMeasure {
+    """ Product is sold by Each ie. individual units eg. "a pack of cushions" """
+    EA
+    """ Product is sold by Weight eg. catch weight fruit and veg"""
+    KG
+}
+

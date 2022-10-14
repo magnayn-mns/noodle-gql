@@ -1,11 +1,15 @@
 package com.nirima.noodle.gqlnoodle.domain;
 
-import java.util.UUID;
+import com.nirima.noodle.gqlnoodle.core.domain.Entity;
 
-public class Product {
-    public UUID id = UUID.randomUUID();
+public class Product extends Entity
+{
+    public Price listPrice = new Price();
 
-    public Product(UUID id) {
-        this.id = id;
+    public Product() {
+    }
+
+    public Product(String id) {
+        super(id);
     }
 }

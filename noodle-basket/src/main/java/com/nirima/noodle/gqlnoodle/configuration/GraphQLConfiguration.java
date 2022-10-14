@@ -25,7 +25,7 @@ public class GraphQLConfiguration {
             return representations.stream()
                     .map(representation -> {
                         if (PRODUCT_TYPE.equals(representation.get("__typename"))) {
-                            return new Product(UUID.fromString((String) representation.get("id")));
+                            //return new Product(UUID.fromString((String) representation.get("id")));
                         }
                         return null;
                     })

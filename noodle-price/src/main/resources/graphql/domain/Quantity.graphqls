@@ -1,0 +1,23 @@
+"""
+How much of the product is sold in this line item.
+
+The property is optional, and if omitted the implied quantity is UOM:EA, numberOfUnits:1, calculatedQuantity:false
+
+"""
+type Quantity {
+    """
+    Has the item been added by exact quantity (false), or has it been calculated (true)
+    """
+    calculatedQuantity: Boolean!
+
+    """
+    The number the unitOfMeasure for this line item.
+
+    Where unitOfMeasure is EA, this should always be an integer value.
+
+    """
+    numberOfUnits: String!
+
+    """The unit by which the item is sold"""
+    unitOfMeasure: UnitOfMeasure!
+}

@@ -1,0 +1,11 @@
+"""The quote is invalid due to an issue with one of the coupons added to the quote"""
+type QuoteInvalidReasonCoupon implements QuoteInvalidReason {
+    """
+    The reason, for this item, why the quote is invalid.
+    """
+    invalidReasonType: InvalidReasonType!
+
+    """The ID of a presented coupon"""
+    coupon: Coupon!
+}
+

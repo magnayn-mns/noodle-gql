@@ -1,0 +1,12 @@
+type QuoteReward {
+    """
+    The amount of discount applied to the total quote value. May be omitted if zero
+    """
+    discountAmount: Money
+
+    """Promotion ID, identifying the promotion that led to the reward."""
+    promotion: Promotion!
+
+    """Type of reward"""
+    rewardType: QuoteRewardType!
+}

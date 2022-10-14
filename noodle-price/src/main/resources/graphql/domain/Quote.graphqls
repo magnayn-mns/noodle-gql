@@ -1,0 +1,45 @@
+type Quote @key(fields: "id") {
+    coupons: [Coupon!]!
+
+    """Date and time that quote was created"""
+    creationDate: DateTime!
+
+    """Currency in ISO 4217 format."""
+    currency: Currency!
+
+    """
+    The ID of the customer, either an anonymous ID or an ID representing a customer.
+    """
+    customer: Identity!
+
+    """
+    Effective date and time that quote is priced (usually now)
+    This is the date the customer expects to pay for their basket, and the prices and promotions reflect that date.
+
+    Conceivably this could be in the future (customer expects to pay for their online order in a weeks time). For a till journey this is always now.
+
+    """
+    effectiveDate: DateTime!
+
+    """
+    Reasons why the quote may be invalid. Only present if the quote is invalid.
+    """
+    invalidReasons: [QuoteInvalidReason!]
+    lineItems: [LineItem!]!
+
+    """
+    The location of the basket, typically a store identifier
+    """
+    location: Location!
+
+    """Unique quote id as received from pricing domain."""
+    id: ID!
+    rewards: [QuoteReward!]!
+
+    """The state of the quote."""
+    state: QuoteState!
+    totals: Totals!
+
+    """If the quote is invalid this property is false. See invalidReasons for details"""
+    valid: Boolean!
+}

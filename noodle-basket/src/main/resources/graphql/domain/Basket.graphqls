@@ -1,4 +1,6 @@
 type Basket {
     contents: [BasketLine!]!
+
+    currentQuote: Quote!
 }
 

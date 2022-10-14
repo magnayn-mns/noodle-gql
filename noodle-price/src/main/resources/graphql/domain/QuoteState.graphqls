@@ -1,0 +1,12 @@
+enum QuoteState {
+    """ Initial state of a quote."""
+    OPEN
+    """ The quote has been accepted (at least once). The get invoice query is available."""
+    ACCEPTED
+    """ Terminal state, customer has paid the invoice associated with the quote."""
+    PAID
+    """ Terminal state, customer has abandoned the quote and any accepted invoice."""
+    ABANDONED
+}
+
+

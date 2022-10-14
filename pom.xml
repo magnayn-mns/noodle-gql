@@ -17,6 +17,7 @@
         <module>noodle-basket</module>
         <module>noodle-range</module>
         <module>noodle-price</module>
+        <module>noodle-core</module>
     </modules>
 
 </project>

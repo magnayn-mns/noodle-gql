@@ -1,0 +1,49 @@
+
+type LineItem {
+    """
+    A unique identifier for the line in the basket. Decided by the consumer when the line is added to the basket.
+
+    """
+    id: ID!
+
+    """
+    The price printed on the packaging or implied by a price embedded barcode (PEB)), when there is one.
+
+    Possible uses are reduced to clear labels, price labels produced by an in-store scales for catch weight products, or gift card sales where we need to know the value sold on the card
+
+    """
+    markedPrice: Money
+
+    """
+    The price for one unit of measure quantity after any published price discount.
+    """
+    nowUnitPrice: Money
+
+    """
+    The price for the line item after published price discounts (quantity x nowUnitPrice)
+
+    A published price discount is an unconditional promotion on the price of product, typically a price cut or clearance.
+
+    """
+    priceBeforeConditionalDiscounts: Money!
+
+    """
+    The base price for the line item before any promotional discounts are applied (quantity x wasUnitPrice)
+
+    """
+    priceBeforeDiscounts: Money!
+
+    """The ID of a product"""
+    product: Product!
+
+    """
+    How much of the product is sold in this line item.
+    """
+    quantity: Quantity!
+
+    """
+    The price for one unit of measure quantity before any promotional discounts
+    """
+    wasUnitPrice: Money
+}
+

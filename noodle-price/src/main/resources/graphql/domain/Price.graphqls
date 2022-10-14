@@ -1,10 +1,11 @@
-enum Measure {
-    EA,
-    Gram
-}
 
+""" Speculative """
 type Price {
-    amount: Float
-    uom: Measure
+    markedPrice: Money
+    nowUnitPrice: Money
+    priceBeforeConditionalDiscounts: Money
+    priceBeforeDiscounts: Money
+    wasUnitPrice: Money
+
 }
 

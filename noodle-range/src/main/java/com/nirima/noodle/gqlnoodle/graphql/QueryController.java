@@ -1,4 +1,5 @@
 package com.nirima.noodle.gqlnoodle.graphql;
+
 import com.nirima.noodle.gqlnoodle.domain.Product;
 
 import org.springframework.graphql.data.method.annotation.Argument;
@@ -13,24 +14,23 @@ import java.util.stream.Collectors;
 @Controller
 public class QueryController {
 
-    Map<UUID, Product> productMap;
+    Map<String, Product> productMap;
 
     public QueryController() {
         var l = Arrays.asList(
-                new Product(UUID.fromString("6B40E5CF-47A2-4CC6-9FF0-4A2B77E88677"),
-                        "Bee Cushion", "Teal", "0290340")
+                new Product("product-1", "Bee Cushion", "Teal", "0290340"),
+                new Product("product-2", "Straight Fit Super Stretch Performance Jeans", "Grey", "T171389M"),
+        new Product("product-3", "Cotton Rich Corduroy Wide Leg Trousers", "Red", "T831239"),
+                new Product("product-4", "Set of 2 Velvet Dining Chairs", "Loft Velvet, Grey", "T654801B"),
+                new Product("product-5", "The Connoisseur’s Choice Red Wine Gift Box", "", "00777643")
         );
 
         productMap = l.stream().collect(Collectors.toMap(e -> e.id, e -> e));
     }
 
-//    @QueryMapping
-//    public Product product() {
-//        return productMap.get(UUID.fromString("53AB031D-65B3-4C69-B77A-F2E920554498"));
-//    }
 
     @QueryMapping
-    public Product product(@Argument UUID id) {
+    public Product product(@Argument String id) {
         return productMap.get(id);
     }
 
@@ -40,11 +40,4 @@ public class QueryController {
     }
 
 
-//    public Iterable<Object> _entities(Iterable<Object> representation) {
-//        return new ArrayList<>();
-//    }
-//
-//    public Service _service() {
-//        return new Service();
-//    }
 }

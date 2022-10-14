@@ -1,0 +1,9 @@
+
+"""A reason why the quote may be invalid"""
+interface QuoteInvalidReason {
+    """
+    The reason, for this item, why the quote is invalid.
+    """
+    invalidReasonType: InvalidReasonType!
+}
+

@@ -1,0 +1,6 @@
+type Coupon @key(fields: "id") {
+    id: ID!
+}
+
+
+
