@@ -1,0 +1,4 @@
+type BasketLineToPriceLine @key(fields: "lineId,quoteId") {
+    lineId: ID!
+    quoteId: ID!
+}

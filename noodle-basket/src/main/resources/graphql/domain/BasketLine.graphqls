@@ -1,4 +1,5 @@
 type BasketLine {
     product: Product!
     quantity: Float
+    pricingInformation: BasketLineToPriceLine
 }

@@ -11,6 +11,6 @@ public abstract class Entity {
     }
 
     public Entity(String id) {
-        this.id = id;
+        this.id = id!=null?id:UUID.randomUUID().toString();
     }
 }

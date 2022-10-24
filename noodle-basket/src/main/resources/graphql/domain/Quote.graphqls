@@ -1,3 +1,4 @@
 type Quote @key(fields: "id") {
     id: ID!
 }
+

@@ -25,11 +25,11 @@ public class QueryController {
 
         var b = new Basket("basket-1");
 
-        b.addLine(new Product("product-1"), 1.0);
-        b.addLine(new Product("product-2"), 2.0);
-        b.addLine(new Product("product-3"), 5.0);
-        b.addLine(new Product("product-4"), 1.0);
-        b.addLine(new Product("product-5"), 1.0);
+        b.addLine("1", new Product("product-1"), 1.0);
+        b.addLine("2", new Product("product-2"), 2.0);
+        b.addLine("3", new Product("product-3"), 5.0);
+        b.addLine("4", new Product("product-4"), 1.0);
+        b.addLine( "5", new Product("product-5"), 1.0);
 
         basketMap.put(b.id, b);
     }

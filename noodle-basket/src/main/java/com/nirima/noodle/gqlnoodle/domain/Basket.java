@@ -17,8 +17,7 @@ public class Basket extends Entity {
         super(id);
     }
 
-
-    public void addLine(Product p, double v) {
-        contents.add( new BasketLine(p, v) );
+    public void addLine(String id, Product p, double v) {
+        contents.add( new BasketLine(this, id, p, v) );
     }
 }

@@ -5,6 +5,7 @@ import com.apollographql.federation.graphqljava._Entity;
 import com.nirima.noodle.gqlnoodle.core.domain.scalars.CurrencyType;
 import com.nirima.noodle.gqlnoodle.core.domain.scalars.DirectionalMoneyType;
 import com.nirima.noodle.gqlnoodle.core.domain.scalars.MoneyType;
+import com.nirima.noodle.gqlnoodle.domain.BasketLineToPriceLine;
 import com.nirima.noodle.gqlnoodle.domain.Price;
 import com.nirima.noodle.gqlnoodle.domain.Product;
 
@@ -48,6 +49,15 @@ public class GraphQLConfiguration {
                             // Any old product - should really look it up
                             return new Product();
                         }
+                        if("BasketLineToPriceLine".equals(representation.get("__typename"))) {
+                            BasketLineToPriceLine basketLineToPriceLine = new BasketLineToPriceLine();
+                            basketLineToPriceLine.lineId =  (String)representation.get("lineId");
+                            basketLineToPriceLine.quoteId = (String)representation.get("quoteId");
+
+                            var quote = queryController.quote(basketLineToPriceLine.quoteId);
+                            basketLineToPriceLine.lineItem = quote.lineItems.get(Integer.parseInt(basketLineToPriceLine.lineId)-1);
+                            return basketLineToPriceLine;
+                        }
                         return null;
                     })
                     .collect(Collectors.toList());
@@ -61,6 +71,10 @@ public class GraphQLConfiguration {
             if (src instanceof Quote) {
                 return env.getSchema()
                         .getObjectType("Quote");
+            }
+            if (src instanceof BasketLineToPriceLine) {
+                return env.getSchema()
+                        .getObjectType("BasketLineToPriceLine");
             }
             return null;
         };
