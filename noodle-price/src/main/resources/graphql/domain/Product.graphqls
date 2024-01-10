@@ -1,5 +1,20 @@
 type Product @key(fields: "id") {
     id: ID!
+    test:String
+    listPrice(param:ListPriceFilter): [Pricing!]!
+    intermediate: Intermediate!
+}
 
-    listPrice: Price
+type Intermediate {
+    listPrice(param:ListPriceFilter): [Pricing!]!
+}
+
+type Pricing {
+
+    location: Location
+    price: Price
+}
+
+input ListPriceFilter {
+    location: String
 }

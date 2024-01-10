@@ -3,10 +3,11 @@ const { ApolloGateway } = require('@apollo/gateway')
 
 const gateway = new ApolloGateway({
     serviceList: [
-        { name: 'basket', url: 'http://localhost:8080/graphql' },
-        { name: 'price', url: 'http://localhost:8081/graphql' },
-        { name: 'range', url: 'http://localhost:8082/graphql' },
-
+        // { name: 'basket', url: 'http://localhost:8080/graphql' },
+        // { name: 'price', url: 'http://localhost:8081/graphql' },
+        // { name: 'range', url: 'http://localhost:8082/graphql' },
+        { name: 'co', url: 'https://dev.nonprod.customerorder.api.mnscorp.net/graphql' },
+        { name: 'price', url: 'https://dev.nonprod.price.api.mnscorp.net/graphql' },
     ]
 });
 

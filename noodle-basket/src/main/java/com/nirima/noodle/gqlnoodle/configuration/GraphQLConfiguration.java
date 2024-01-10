@@ -2,22 +2,72 @@ package com.nirima.noodle.gqlnoodle.configuration;
 
 import com.apollographql.federation.graphqljava.Federation;
 import com.apollographql.federation.graphqljava._Entity;
+import com.nirima.noodle.gqlnoodle.core.domain.scalars.CurrencyType;
+import com.nirima.noodle.gqlnoodle.core.domain.scalars.DirectionalMoneyType;
+import com.nirima.noodle.gqlnoodle.core.domain.scalars.MoneyType;
+import com.nirima.noodle.gqlnoodle.core.domain.scalars.ScalarType;
 import com.nirima.noodle.gqlnoodle.domain.Product;
-import graphql.schema.DataFetcher;
-import graphql.schema.TypeResolver;
+import graphql.Assert;
+import graphql.GraphQLContext;
+import graphql.schema.*;
+import io.honeycomb.opentelemetry.sdk.trace.spanprocessors.BaggageSpanProcessor;
+
+import io.opentelemetry.api.OpenTelemetry;
 import org.springframework.boot.autoconfigure.graphql.GraphQlSourceBuilderCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.graphql.execution.RuntimeWiringConfigurer;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Collectors;
-
+import io.honeycomb.opentelemetry.OpenTelemetryConfiguration;
 @Configuration
 public class GraphQLConfiguration {
     public static final String PRODUCT_TYPE = "Product";
 
+    public static final GraphQLScalarType BINGO_TYPE = GraphQLScalarType.newScalar()
+            .name("Bingo")
+            .description("A custom scalar that handles emails")
+            .withDirective(GraphQLDirective.newDirective()
+                    .name("conformsRegex")
+                    .argument(GraphQLArgument.newArgument()
+                            .name("regex").type(GraphQLTypeReference.typeRef("string"))
+                            .build())
+                    .build())
+            .coercing(new Coercing() {
+                @Override
+                public Object serialize(Object dataFetcherResult) {
+                    return dataFetcherResult.toString();
+                }
+
+                public Object serialize(Object dataFetcherResult, GraphQLContext graphQLContext, Locale locale) throws CoercingSerializeException {
+                    Assert.assertNotNull(dataFetcherResult);
+                    Assert.assertNotNull(graphQLContext);
+
+                    return this.serialize(dataFetcherResult);
+                }
+
+                @Override
+                public Object parseValue(Object input) {
+                    return "eh";
+                }
+
+                @Override
+                public Object parseLiteral(Object input) {
+                    return "";
+                }
+            })
+            .build();
+
+    @Bean
+    public RuntimeWiringConfigurer runtimeWiringConfigurer() {
+        return wiringBuilder ->
+                wiringBuilder.scalar(ScalarType.BASKET_ID_TYPE)
+                        .scalar(BINGO_TYPE);
+    }
     @Bean
     public GraphQlSourceBuilderCustomizer federationTransform() {
         DataFetcher entityDataFetcher = env -> {

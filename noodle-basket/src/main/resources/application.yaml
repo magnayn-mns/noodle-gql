@@ -1,4 +1,14 @@
 
+service:
+  name: basket
+
+honeycomb:
+  api:
+    key: fa84da75cec2764ac882060b67287a0d
+  metrics:
+    dataset: gql
+
+
 graphql:
   servlet:
     enabled: true

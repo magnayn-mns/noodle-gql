@@ -10,9 +10,12 @@ type Query {
     ): Quote
 }
 
-
-
-
+type Fish @key(fields: "id") {
+    id: ID!
+    size: Int @external
+    weight: Int @external
+    shippingEstimate: String @requires(fields: "size weight")
+}
 
 
 

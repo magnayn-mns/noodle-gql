@@ -1,4 +1,17 @@
+directive @conformsRegex(regex: String) on SCALAR | FIELD_DEFINITION
+directive @min(value: Int) on FIELD_DEFINITION
+
 type Query {
     basket(id: ID!): Basket
+    getFish(id: ID!) : Fish!
 }
 
+
+scalar Bingo @conformsRegex(regex:"[0-9]+")
+
+type Fish @key(fields: "id") {
+    id: ID!
+    size: Int @min(value: 1)
+    weight: Int
+    data: Bingo @conformsRegex(regex:"[a-z]+")
+}

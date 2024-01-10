@@ -42,4 +42,8 @@ type Quote @key(fields: "id") {
 
     """If the quote is invalid this property is false. See invalidReasons for details"""
     valid: Boolean!
+
+    fish: Fish
 }
+
+

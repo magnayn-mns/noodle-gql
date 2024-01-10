@@ -1,6 +1,7 @@
 package com.nirima.noodle.gqlnoodle.graphql;
 
 import com.nirima.noodle.gqlnoodle.domain.Basket;
+import com.nirima.noodle.gqlnoodle.domain.Fish;
 import com.nirima.noodle.gqlnoodle.domain.Product;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
@@ -20,6 +21,17 @@ public class QueryController {
     @QueryMapping
     public Basket basket(@Argument String id) {
         return basketMap.get(id);
+    }
+
+    @QueryMapping
+    public Fish getFish(@Argument String id) {
+        var f = new Fish();
+        f.id = id;
+        f.size = 100;
+        f.weight = 300;
+        f.data = "FOO";
+        return f;
+
     }
     public QueryController() {
 

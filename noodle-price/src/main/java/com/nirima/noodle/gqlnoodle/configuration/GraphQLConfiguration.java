@@ -5,6 +5,7 @@ import com.apollographql.federation.graphqljava._Entity;
 import com.nirima.noodle.gqlnoodle.core.domain.scalars.CurrencyType;
 import com.nirima.noodle.gqlnoodle.core.domain.scalars.DirectionalMoneyType;
 import com.nirima.noodle.gqlnoodle.core.domain.scalars.MoneyType;
+import com.nirima.noodle.gqlnoodle.core.domain.scalars.ScalarType;
 import com.nirima.noodle.gqlnoodle.domain.BasketLineToPriceLine;
 import com.nirima.noodle.gqlnoodle.domain.Price;
 import com.nirima.noodle.gqlnoodle.domain.Product;
@@ -29,12 +30,14 @@ public class GraphQLConfiguration {
 
     @Resource
     QueryController queryController;
+
     @Bean
     public RuntimeWiringConfigurer runtimeWiringConfigurer() {
         return wiringBuilder -> wiringBuilder.scalar(ExtendedScalars.DateTime)
                 .scalar(CurrencyType.CURRENCY_SCALAR_TYPE)
                 .scalar(MoneyType.MONEY_SCALAR_TYPE)
-                .scalar(DirectionalMoneyType.TYPE);
+                .scalar(DirectionalMoneyType.TYPE)
+                .scalar(ScalarType.PRICE_ID_TYPE);
     }
     @Bean
     public GraphQlSourceBuilderCustomizer federationTransform() {
